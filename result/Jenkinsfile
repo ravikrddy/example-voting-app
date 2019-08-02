@@ -3,6 +3,7 @@ pipeline {
     docker{
       image 'nodejs:lts-alpine'
   }
+ }
 
   stages{
       stage(build){
