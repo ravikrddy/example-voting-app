@@ -1,0 +1,40 @@
+pipeline {
+  agent{
+    docker{
+      image 'pip:rc-alpine'
+  }
+ }
+  stages{
+      stage(build){
+        when{
+            changeset "**/vote/**"
+          }
+
+        steps{
+          echo 'Compiling vote app..'
+          dir('vote'){
+            sh 'pip install -r requirements.txt'
+	    sh 'pip install .'
+          }
+        }
+      }
+      stage(vote){
+        when{
+          changeset "**/vote/**"
+        }
+        steps{
+          echo 'Running Unit Tets on vote app..'
+          dir('vote'){
+            sh 'pip test'
+           }
+
+          }
+    }
+  }
+
+  post{
+    always{
+        echo 'Building multibranch pipeline for vote is completed..'
+    }
+  }
+}
