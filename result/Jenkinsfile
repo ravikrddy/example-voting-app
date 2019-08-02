@@ -1,10 +1,9 @@
 pipeline {
   agent{
     docker{
-      image 'nodejs:lts-alpine'
+      image 'node:8-alpine'
   }
  }
-
   stages{
       stage(build){
         when{
