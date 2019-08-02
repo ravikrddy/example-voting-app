@@ -6,7 +6,7 @@ import unittest
 class VoteUnitTest(unittest.TestCase):
 
     def setUp(self):
-        """Unit Test Setup Starts"""
+        """Unit Test Setup Starts Now"""
         self.app = app.test_client()
         self.app.testing = True
 
