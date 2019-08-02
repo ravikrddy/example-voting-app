@@ -20,16 +20,6 @@ pipeline {
               sh 'pip install -r requirements.txt'
             }
           }
-
-<<<<<<< HEAD
-=======
-        steps{
-          echo 'Compiling vote app..'
-          dir('vote'){
-            sh 'pip install -r requirements.txt'         
-           }
-        }
->>>>>>> f15b0d4dbda210503a4a2dd36d495cdc68a18e0d
       }
       stage('test'){
           agent{
