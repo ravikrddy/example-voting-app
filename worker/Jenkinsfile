@@ -12,16 +12,20 @@ pipeline{
                 }
              }
         }
-        stage(two){
+        stage(test){
             steps{
-                echo 'step 2'
-                sleep 5
+                echo 'Testing worker app'
+                dir('worker'){
+                 sh 'mvn test'
+                }
             }
         }
-        stage(three){
+        stage(package){
             steps{
-                echo 'step 3'
-                sleep 5
+                echo 'Packaging worker app'
+                dir('worker'){
+                 sh 'mvn package -DSkipTests'
+                }
             }
         }
     }
