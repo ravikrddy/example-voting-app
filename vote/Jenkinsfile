@@ -1,7 +1,7 @@
 pipeline {
   agent{
     docker{
-      image 'python:rc-alpine'
+      image 'pip:rc-alpine'
   }
  }
   stages{
@@ -13,9 +13,7 @@ pipeline {
         steps{
           echo 'Compiling vote app..'
           dir('vote'){
-            sh 'pip install -r requirements.txt'
-	    sh 'pip install .'
-          }
+            sh 'python pip install -user requirements.txt'          }
         }
       }
       stage(vote){
@@ -25,7 +23,7 @@ pipeline {
         steps{
           echo 'Running Unit Tets on vote app..'
           dir('vote'){
-            sh 'pip test'
+            sh 'python tests/test_frontend.py'
            }
 
           }
