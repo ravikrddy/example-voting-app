@@ -25,6 +25,7 @@ pipeline{
                 echo 'Packaging worker app'
                 dir('worker'){
                  sh 'mvn package -DSkipTests'
+                 archiveArtifacts '**/target/*.jar'
                 }
             }
         }
